@@ -18,6 +18,8 @@ namespace HR.Entities.DBModels
         public string? MobileNumber { get; set; }
         public string? UploadedResume { get; set; }
         public int? Status { get; set; }
+        public bool IsApproved { get; set; }
+
         public int? VacancyId { get; set; }
         public DateTime? CreatedAt { get; set; }
         public string? CreatedBy { get; set; }

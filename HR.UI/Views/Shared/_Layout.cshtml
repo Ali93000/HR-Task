@@ -1,0 +1,246 @@
+﻿@model HR.UI.Models.TokenDecodedData;
+
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="rtl">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+
+    <title>
+        إنــجـاز - منصة الموارد البشرية
+    </title>
+    <link href="~/css/customcss/style.bundle.rtl.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/customcss/custom.css" rel="stylesheet" type="text/css" />
+    <!-- END Custom CSS-->
+</head>
+
+<body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-light m-aside-left--fixed m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar"
+      data-open="click" data-menu="vertical-menu" data-col="2-columns">
+    <!-- fixed-top-->
+    <!-- begin::Body -->
+
+    <div class="m-grid m-grid--hor m-grid--root m-page">
+        <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+            <div id="m_aside_left" class="m-grid__item	m-aside-left  m-aside-left--skin-light " style=" background: url(../../images/bg7.png) no-repeat center 0;">
+                <!-- BEGIN: Aside Menu -->
+                <div id="m_ver_menu" class="m-aside-menu  m-aside-menu--skin-light m-aside-menu--submenu-skin-light " m-menu-vertical="1" m-menu-scrollable="1" m-menu-dropdown-timeout="500" style="position: relative; background: rgb(226 229 229 / 44%)">
+                    <ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
+                        <li class="m-menu__item  m-menu__item--active" aria-haspopup="true">
+                            <a href="@Url.Action("Index", "Home")" class="m-menu__link">
+                                <i class="m-menu__link-icon flaticon-line-graph"></i>
+                                <span class="m-menu__link-title">
+                                    <span class="m-menu__link-wrap">
+                                        <span class="m-menu__link-text menuItemsStyle" style="color:black">الـرئـيـسـيـة</span>
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+
+                        @*Permissions*@
+
+                        <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+                            <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                                <i class="m-menu__link-icon flaticon-add"></i>
+                                <span class="m-menu__link-text menuItemsStyle" style="color:black"> الــعــمــلــيــات</span>
+                                <i class="m-menu__ver-arrow la la-angle-left"></i>
+                            </a>
+                            @*@if (Model.Roles.Contains("HR Manager"))
+                            {*@
+                                <div class="m-menu__submenu ">
+                                    <span class="m-menu__arrow"></span>
+                                    <ul class="m-menu__subnav">
+                                        <li class="m-menu__item " aria-haspopup="true">
+                                            <a href="@Url.Action("Create", "Vacancy")" class="m-menu__link ">
+                                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                    <span></span>
+                                                </i>
+                                                <span class="m-menu__link-text"> اضافة بيانات وظيفة</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @*}
+                            @if (Model.Roles.Contains("HR Officer") || Model.Roles.Contains("HR Manager") || Model.Roles.Contains("HR Director"))
+                            {*@
+                                <div class="m-menu__submenu ">
+                                    <span class="m-menu__arrow"></span>
+                                    <ul class="m-menu__subnav">
+                                        <li class="m-menu__item " aria-haspopup="true">
+                                            <a href="@Url.Action("Index", "Vacancy")" class="m-menu__link ">
+                                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                    <span></span>
+                                                </i>
+                                                <span class="m-menu__link-text"> قـائـمـة الـوظـائـف</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @*}  
+                            @if (Model.Roles.Contains("HR Officer"))
+                            {*@
+                                <div class="m-menu__submenu ">
+                                    <span class="m-menu__arrow"></span>
+                                    <ul class="m-menu__subnav">
+                                        <li class="m-menu__item " aria-haspopup="true">
+                                            <a href="@Url.Action("Create", "Candicate")" class="m-menu__link ">
+                                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+                                                    <span></span>
+                                                </i>
+                                                <span class="m-menu__link-text"> اضافة مرشح جديد </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @*}*@
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- END: Aside Menu -->
+            </div>
+
+            <!-- BEGIN: Left Aside -->
+            @{ Html.RenderPartial("_Header"); }
+
+            <!-- END: Left Aside -->
+
+
+
+
+            <div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+                <div class="m-content">
+
+                    @RenderBody()
+
+                </div>
+            </div>
+
+
+        </div>
+        <!-- end::Body -->
+        @*@{Html.RenderPartial("_VHeaderUsers");}*@
+        <footer class="m-grid__item		m-footer ">
+            <div class="m-container m-container--fluid m-container--full-height m-page__container">
+                <div class="m-stack m-stack--flex-tablet-and-mobile m-stack--ver m-stack--desktop">
+                    <div class="m-stack__item m-stack__item--left m-stack__item--middle m-stack__item--last">
+                        <span class="m-footer__copyright">
+                            جميع الحقوق محفوظة لدى
+                            <a href="#" class="m-link" target="_blank">شركتنا</a>
+                            @DateTime.Now.Year.ToString() &copy;
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js">
+</ script >
+
+                                        < script src="~/Content/app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js"
+                                                type="text/javascript"></script>
+    <script src="~/Content/app-assets/vendors/js/forms/validation/jqBootstrapValidation.js"
+            type="text/javascript"></script>
+    <script src="~/Content/app-assets/vendors/js/forms/toggle/bootstrap-switch.min.js"
+            type="text/javascript"></script>
+    <script src="~/Content/app-assets/vendors/js/forms/toggle/switchery.min.js" type="text/javascript"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    @*<script src="~/Content/app-assets/js/scripts/forms/validation/form-validation.js"
+        type="text/javascript"></script>*@
+    <link rel="stylesheet" type="text/css" href="~/Content/app-assets/vendors/css/forms/selects/select2.min.css">
+    <script src="~/Content/app-assets/vendors/js/forms/select/select2.full.min.js" type="text/javascript"></script>
+    <script src="~/Content/app-assets/js/scripts/forms/select/form-select2.js" type="text/javascript"></script>
+
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script src="~/Content/app-assets/vendors/js/charts/chart.min.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    @*<script src="~/Content/app-assets/vendors/js/tables/datatable/datatables.min.js" type="text/javascript"></script>*@
+
+    <!-- BEGIN PAGE LEVEL JS-->
+    <!-- END PAGE LEVEL JS-->
+
+    <script src="~/Content/app-assets/vendors/js/forms/icheck/icheck.min.js" type="text/javascript"></script>
+    <script src="~/Content/app-assets/vendors/js/forms/toggle/bootstrap-checkbox.min.js"
+            type="text/javascript"></script>
+
+    <script src="~/Content/app-assets/vendors/js/charts/jquery.sparkline.min.js" type="text/javascript"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN MODERN JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    <script src="~/Content/app-assets/js/scripts/tables/components/table-components.js"
+            type="text/javascript"></script>
+
+    @*For Table*@
+    <script src="~/Content/app-assets/vendors/js/tables/jquery.dataTables.min.js"></script>
+    <link href="~/Content/app-assets/vendors/css/tables/datatable/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <script>
+        //Search Table
+        $("#loginUsername").text("مرحبا : " + localStorage.getItem("Username"));
+        //function SearchTable(ControllerName, ViewName, model) {
+        //    document.getElementById('LoadIcon').style.display = '-webkit-inline-box';
+        //    $.ajax({
+        //        type: "post",
+        //        url: "/" + ControllerName + "/" + ViewName + "",
+
+
+        //        data: JSON.stringify(model),
+        //        //data: JSON.stringify(formData),
+        //        contentType: "application/json; charset=utf-8",
+        //        success: function (data) {
+        //            $('#DivTable').html(data);
+        //            document.getElementById('LoadIcon').style.display = 'none';
+        //        },
+        //        error: function (data) {
+        //            alert('يوجد خطأ');
+        //            document.getElementById('LoadIcon').style.display = 'none';
+        //        }
+        //    });
+        //}
+    </script>
+    <script src="~/assets/vendors/base/vendors.bundle.js"></script>
+    <script src="~/assets/demo/default/base/scripts.bundle.js"></script>
+    <script src="~/assets/vendors/custom/datatables/datatables.bundle.js"></script>
+    <!--end::Page Vendors -->
+    <!--begin::Page Resources -->
+    <script src="~/assets/demo/default/custom/crud/datatables/basic/paginations.js"></script>
+    <!--end::Base Scripts -->
+    <!--begin::Page Vendors -->
+    <script src="~/assets/vendors/custom/fullcalendar/fullcalendar.bundle.js"></script>
+    <!--end::Page Vendors -->
+    <!--begin::Page Snippets -->
+    <script src="~/css/customcss/dashboard.js"></script>
+
+</body>
+</html>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<link href="~/Content/app-assets/vendors/css/tables/datatable/datatables.min.css" rel="stylesheet" />
+<script src="~/Content/app-assets/vendors/js/tables/datatable/datatables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+        $("input[type='search']").css({
+            'width': '768px',
+            'border': '1px solid black'
+        });
+
+        $("div.dataTables_wrapper div.dataTables_length label").css({
+            "margin-left": "400px",
+            //    "margin-top": "11px"
+        });
+
+        $("div.dataTables_wrapper div.dataTables_filter label").css({
+            "margin-right": "-400px"
+        });
+        //$("#myTable_length").css({ "margin-right": "587px" });
+        $("#myTable_previous").removeClass("disabled");
+        //$("div.dataTables_filter label").val("عرض");
+
+    });
+</script>

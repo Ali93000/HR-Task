@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HR.Entities.EnvironmentConfigurations.Implementation
 {
-    internal class HRConfigurations : IHRConfigurations
+    public class HRConfigurations : IHRConfigurations
     {
         public string ApiUrl { get; set; }
 

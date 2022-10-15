@@ -1,0 +1,49 @@
+﻿@model HR.Entities.ApiModels.VacancyModels.Request.CreateVacancyRequest
+
+@{
+    ViewData["Title"] = "اضافة";
+}
+
+@using (Html.BeginForm("Create", "Vacancy"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="m-portlet">
+
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text" style="color: black;font-size: 1.9rem;">
+                                اضافة وظيفة جديدة
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="m-portlet__body" style="background-color: #e7e7e7">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <label class="label" style="font-size:14px;margin-right:25px">عنوان الوظيفة  </label>
+                        <div class="col-md-10 dataText">
+                            @Html.TextBoxFor(model => model.NameAr, new { @class = "form-control", @style = "width:450px; margin-right:22px" })
+                            @Html.ValidationMessage("NameArValidation", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display:flex">
+                        <div>
+                            &nbsp;&nbsp; <input type="submit" value=" اضافة الوظيفة" class="btn btn-brand" style="width: 160px; padding-right: 10px; margin-right: 125px" } />
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Html.ActionLink("الـعـودة الى الـقـائـمـة", "Index", "Vacancy", null, new { @style = "color:black;font-size:18px;text-decoration:underline;" })
+                </div>
+            </div>
+        </div>
+    </div>
+}

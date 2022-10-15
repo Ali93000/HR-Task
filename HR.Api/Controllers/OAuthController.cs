@@ -25,7 +25,7 @@ namespace HR.Api.Controllers
         {
             // Load user data to check credentials
             var user = await _mediator.Send(new VerifyLoggedInUserQuery(tokenRequest));
-            if (user == null)
+            if (!user.IsSuccessful)
                 return BadRequest("Invalid username or password");
             var token = await _jwtManager.GenerateJWT(user);
             return Ok(token);

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HR.Api.Controllers
 {
-    [Route("api/vacancy")]
+    [Route("api/v1/vacancy")]
     [ApiController]
     public class VacancyController : ControllerBase
     {

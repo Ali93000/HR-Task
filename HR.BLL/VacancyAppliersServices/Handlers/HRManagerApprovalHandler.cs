@@ -52,6 +52,7 @@ namespace HR.BLL.VacancyAppliersServices.Handlers
                 approval.VacancyApplierId = vacancyApplier.Id;
                 approval.HrmanagerId = _jwtManager.ReadTokenData().UserId;
                 approval.HrmanagerApprovedAt = _helperServices.GetCurrentDateTimeUTC();
+                _unitOfWork.VacancyAppliersRepository.Update(vacancyApplier);
                 await _unitOfWork.VacancyApplierApprovalRepository.AddAsync(approval);
                 await _unitOfWork.SaveAsync();
             }
@@ -60,6 +61,8 @@ namespace HR.BLL.VacancyAppliersServices.Handlers
                 applierFromDb.VacancyApplierId = vacancyApplier.Id;
                 applierFromDb.HrmanagerId = _jwtManager.ReadTokenData().UserId;
                 applierFromDb.HrmanagerApprovedAt = _helperServices.GetCurrentDateTimeUTC();
+                vacancyApplier.IsApproved = true;
+                _unitOfWork.VacancyAppliersRepository.Update(vacancyApplier);
                 _unitOfWork.VacancyApplierApprovalRepository.Update(applierFromDb);
                 await _unitOfWork.SaveAsync();
             }
