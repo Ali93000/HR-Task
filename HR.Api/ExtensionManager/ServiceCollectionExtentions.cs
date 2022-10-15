@@ -65,6 +65,7 @@ namespace HR.Api.ExtensionManager
             services.AddScoped<IVacancyAppliersMapperConfiguration, VacancyAppliersMapperConfiguration>();
             services.AddScoped<IVacancyAppliersMappingResponse, VacancyAppliersMappingResponse>();
             services.AddScoped<IVacancyAppliersMappingRequest, VacancyAppliersMappingRequest>();
+            services.AddScoped<IVacancyApplierApprovalRepository, VacancyApplierApprovalRepository>();
 
         }
         public static void AddMediatorConfigurations(this IServiceCollection services)

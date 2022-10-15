@@ -19,6 +19,7 @@ namespace HR.DAL.Domain
         public virtual DbSet<DB_UserRole> UserRoles { get; set; } = null!;
         public virtual DbSet<DB_Vacancy> Vacancies { get; set; } = null!;
         public virtual DbSet<DB_VacancyApplier> VacancyAppliers { get; set; } = null!;
+        public virtual DbSet<DB_VacancyApplierApproval> VacancyApplierApprovals { get; set; } = null!;
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

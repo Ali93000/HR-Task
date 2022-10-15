@@ -18,6 +18,7 @@ namespace HR.Api.Controllers
             _mediator = mediator;
         }
 
+        [Authorize(Roles = "HR Officer,HR Manager,HR Director")]
         [HttpGet]
         public async Task<IActionResult> GetAllVacancies()
         {

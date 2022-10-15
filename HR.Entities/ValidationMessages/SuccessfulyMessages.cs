@@ -16,6 +16,11 @@ namespace HR.Entities.ValidationMessages
         public static string CreatedSuccessfuly(string model)
         {
             return $"{model} created successfuly";
+        } 
+        
+        public static string ApprovedSuccessfuly(string model)
+        {
+            return $"{model} approved successfuly";
         }
 
     }

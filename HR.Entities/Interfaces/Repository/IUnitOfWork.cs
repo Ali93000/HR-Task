@@ -15,5 +15,6 @@ namespace HR.Entities.Interfaces.Repository
         IUserRolesRepository UserRolesRepository { get; set; }
         IVacancyRepository VacancyRepository { get; set; }
         IVacancyAppliersRepository VacancyAppliersRepository { get; set; }
+        IVacancyApplierApprovalRepository VacancyApplierApprovalRepository { get; set; }
     }
 }

@@ -19,6 +19,7 @@ namespace HR.DAL.Repository
             UserRolesRepository = new UserRolesRepository(_context);
             VacancyRepository = new VacancyRepository(_context);
             VacancyAppliersRepository = new VacancyAppliersRepository(_context);
+            VacancyApplierApprovalRepository = new VacancyApplierApprovalRepository(_context);
         }
 
        
@@ -66,6 +67,7 @@ namespace HR.DAL.Repository
         public IUserRolesRepository UserRolesRepository { get; set; }
         public IVacancyRepository VacancyRepository { get; set; }
         public IVacancyAppliersRepository VacancyAppliersRepository { get; set; }
+        public IVacancyApplierApprovalRepository VacancyApplierApprovalRepository { get; set; }
 
     }
 }

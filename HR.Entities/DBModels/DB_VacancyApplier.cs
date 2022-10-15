@@ -8,6 +8,10 @@ namespace HR.Entities.DBModels
 {
     public class DB_VacancyApplier
     {
+        public DB_VacancyApplier()
+        {
+            VacancyApplierApprovals = new HashSet<DB_VacancyApplierApproval>();
+        }
         public int? Id { get; set; }
         public string? FullName { get; set; }
         public string? Email { get; set; }
@@ -19,5 +23,7 @@ namespace HR.Entities.DBModels
         public string? CreatedBy { get; set; }
 
         public virtual DB_Vacancy? Vacancy { get; set; }
+        public virtual ICollection<DB_VacancyApplierApproval> VacancyApplierApprovals { get; set; }
+
     }
 }

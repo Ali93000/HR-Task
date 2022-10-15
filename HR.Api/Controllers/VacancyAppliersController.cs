@@ -1,5 +1,6 @@
 ﻿using HR.BLL.VacancyAppliersServices.Commands;
 using HR.BLL.VacancyAppliersServices.Queries;
+using HR.BLL.VacancyServices.Commands;
 using HR.Entities.ApiModels.VacancyAppliersModels.Request;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -35,6 +36,26 @@ namespace HR.Api.Controllers
         public async Task<IActionResult> CreateVacancyAppliers([FromBody] CreateVacancyApplierRequest createVacancyApplierRequest)
         {
             var applies = await _mediator.Send(new CreateVacancyAppliersCommand(createVacancyApplierRequest));
+            if(!applies.IsSuccessful)
+                return BadRequest(applies);
+            return Ok(applies);
+        }  
+        
+        [Authorize(Roles = "HR Manager")]
+        [HttpPost("manager-approval")]
+        public async Task<IActionResult> ApproveApplierByHRManager([FromBody] HRManagerApprovalRequest hrManagerApprovalRequest)
+        {
+            var applies = await _mediator.Send(new HRManagerApprovalCommand(hrManagerApprovalRequest));
+            if(!applies.IsSuccessful)
+                return BadRequest(applies);
+            return Ok(applies);
+        } 
+        
+        [Authorize(Roles = "HR Director")]
+        [HttpPost("director-approval")]
+        public async Task<IActionResult> ApproveApplierByHRDirector([FromBody] HRManagerApprovalRequest hrManagerApprovalRequest)
+        {
+            var applies = await _mediator.Send(new HRDirectorApprovalCommand(hrManagerApprovalRequest));
             if(!applies.IsSuccessful)
                 return BadRequest(applies);
             return Ok(applies);
