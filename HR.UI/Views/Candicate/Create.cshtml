@@ -49,13 +49,13 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <label class="label" style="font-size:14px;margin-right:25px"> السيرة الذاتية  </label>
                         <div class="col-md-10 dataText">
                             @Html.TextBoxFor(model => model.UploadedResume, new { @class = "form-control", @style = "width:450px; margin-right:16px" })
                             @Html.ValidationMessage("CityValidation", new { @class = "text-danger" })
                         </div>
-                    </div>
+                    </div>*@
 
                     <div class="form-group" style="display:flex">
                         <label class="label" style="font-size: 14px; margin-right: 25px"> فئة الوظيفة   </label>
@@ -72,9 +72,9 @@
                     </div>
                 </div>
 
-                <div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Html.ActionLink("الـعـودة الى الـقـائـمـة", "Index", "Company", null, new { @style = "color:black;font-size:18px;text-decoration:underline;" })
-                </div>
+                @*<div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Html.ActionLink("الـعـودة الى الـقـائـمـة", "Index", "Candicate", null, new { @style = "color:black;font-size:18px;text-decoration:underline;" })
+                </div>*@
             </div>
         </div>
     </div>

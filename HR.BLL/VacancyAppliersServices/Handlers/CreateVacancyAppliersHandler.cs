@@ -39,6 +39,17 @@ namespace HR.BLL.VacancyAppliersServices.Handlers
             mapped.CreatedAt = _helperServices.GetCurrentDateTimeUTC();
             mapped.CreatedBy = _jwtManager.ReadTokenData().UserName;
             mapped.Status = (int)VacancyApplierStatus.CreateByHROffice;
+            mapped.UploadedResume = request.createVacancyApplierRequest.CV.FileName;
+
+            string path = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "Files"));
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            using (var fileStream = new FileStream(Path.Combine(path, request.createVacancyApplierRequest.CV.FileName), FileMode.Create))
+            {
+                await request.createVacancyApplierRequest.CV.CopyToAsync(fileStream);
+            }
             await _unitOfWork.VacancyAppliersRepository.AddAsync(mapped);
             await _unitOfWork.SaveAsync();
             return new GenericResponse()

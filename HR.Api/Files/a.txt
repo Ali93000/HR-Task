@@ -1,0 +1,16 @@
+﻿create response code list for all cases for the system to handle response code
+
+modify search patient endpoint and handle response code to be clear
+
+modify issue new prescription endpoint and handle response code to be clear
+
+modify reissue prescription endpoint and handle response code to be clear
+
+modify validate licence for practitioner endpoint and handle response code to be clear
+
+
+fix bug User as able to search for patient with ID only from QA team
+
+fix bug Pregnancy start date is not retrieved from QA team
+
+fix bug User as unable to search for patient that does not exits in the DB from QA team

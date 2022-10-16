@@ -33,7 +33,7 @@ namespace HR.Api.Controllers
 
         [Authorize(Roles = "HR Officer")]
         [HttpPost]
-        public async Task<IActionResult> CreateVacancyAppliers([FromBody] CreateVacancyApplierRequest createVacancyApplierRequest)
+        public async Task<IActionResult> CreateVacancyAppliers([FromForm] CreateVacancyApplierRequest createVacancyApplierRequest)
         {
             var applies = await _mediator.Send(new CreateVacancyAppliersCommand(createVacancyApplierRequest));
             if(!applies.IsSuccessful)

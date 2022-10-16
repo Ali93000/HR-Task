@@ -10,5 +10,7 @@ namespace HR.UI.Consumer.Interfaces
     {
         Task<VacancyAppliersResponse> GetAllVacancyAppliers();
         Task<GenericResponse> CreateVacancyApplier(CreateVacancyApplierRequest data);
+        Task<GenericResponse> ApproveByDirector(HRManagerApprovalRequest data);
+        Task<GenericResponse> ApproveByManager(HRManagerApprovalRequest data);
     }
 }

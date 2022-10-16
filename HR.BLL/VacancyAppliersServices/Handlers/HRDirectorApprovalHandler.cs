@@ -6,6 +6,7 @@ using HR.Entities.Interfaces.OAuthServices;
 using HR.Entities.Interfaces.Repository;
 using HR.Entities.Interfaces.SharedServices;
 using HR.Entities.ValidationMessages;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace HR.BLL.VacancyAppliersServices.Handlers
 {
-    internal class HRDirectorApprovalHandler
+    public class HRDirectorApprovalHandler : IRequestHandler<HRDirectorApprovalCommand, GenericResponse>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IHelperServices _helperServices;

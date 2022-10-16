@@ -1,0 +1,62 @@
+﻿@model HR.Entities.DTOModels.VacancyAppliers.GetAllVacancyAppliersDto
+@using HR.Entities.Enums;
+ 
+@{
+    ViewData["Title"] = "تفاصيل المرشح";
+}
+
+<div>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="m-portlet">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text" style="color: #157c6a;font-size: 1.9rem;">
+                                تـفـاصـيـل المرشح
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-portlet__body">
+
+                    <table class="table table-bordered hover" style="font-size:large">
+                        <tbody>
+                            <tr>
+                                <th class="thStyle"><text> اسم المرشح</text> </th>
+                                <td class="thStyle">
+                                    &nbsp;@Html.DisplayFor(model => model.FullName)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="thStyle"><text>  البريد الالكترونى</text> </th>
+                                <td class="thStyle">
+                                    &nbsp;@Html.DisplayFor(model => model.Email)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="thStyle"><text>رقم الهاتف</text></th>
+                                <td class="thStyle">
+                                    &nbsp; @Html.DisplayFor(model => model.MobileNumber)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="thStyle"><text>الحالة </text> </th>
+                                <td class="thStyle">
+                                    @if (Model.IsApproved == false)
+                                    {
+                                        @Html.ActionLink("موافقة", "Approve", new { id = Model.Id })
+                                    }
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        @*@Html.ActionLink("Edit", "Edit", new { id = model.TemplateModel.Id }) |*@
+                        @Html.ActionLink("العودة الى القائمة", "Index", null, new { @style = "text-decoration:underline; color:black;font-size:large" })
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,7 +8,14 @@ namespace HR.Entities.DTOModels.OAuthDto
 {
     public class ReadTokenInfo
     {
-        public int UserId { get; set; } 
-        public string UserName { get; set; } 
+        public ReadTokenInfo()
+        {
+            Roles = new List<string>();
+        }
+        public string? Email { get; set; }
+        public string Jti { get; set; }
+        public int UserId { get; set; }
+        public string? UserName { get; set; }
+        public List<string> Roles { get; set; }
     }
 }
